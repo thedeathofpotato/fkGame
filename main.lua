@@ -1,13 +1,13 @@
 -- LÖVEver: 0.9
 
 function love.load()
-	love.window.setMode(1280, 800, {
-		resizable = true,
-		vsync = true,
-		minwidth = 800,
-		minheight = 600})
-	love.graphics.setBackgroundColor(100, 100, 100)
-	bg = love.graphics.newImage("bg.png")
+    love.window.setMode(1280, 800, {
+        resizable = true,
+        vsync = true,
+        minwidth = 800,
+        minheight = 600})
+    love.graphics.setBackgroundColor(100, 100, 100)
+    bg = love.graphics.newImage("bg.png")
 
     love.window.setTitle("FK-Game")
 
@@ -16,7 +16,7 @@ function love.load()
     sourceCodePro = love.filesystem.newFile("SourceCodePro-Regular.otf")
     freeMono = love.filesystem.newFile("FreeMono.ttf")
 
-	gamestate = 0
+    gamestate = 0
 end
 
 function love.mousepressed(x, y, button)
@@ -29,8 +29,8 @@ end
 
 function love.keypressed(key, unicode)
     if key == "escape" then
-        love.event.quit()  
-    end     
+        love.event.quit()
+    end
 end
 
 function love.keyreleased(key, unicode)
@@ -48,7 +48,7 @@ end
 
 function love.draw()
 
-	if gamestate == 0 then
+    if gamestate == 0 then
 
         love.mouse.setVisible(true)
 
@@ -56,5 +56,5 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
         love.graphics.draw(bg, 0, 0, 0, windowWidth / bg:getWidth(), windowHeight / bg:getHeight())
         love.graphics.setColor(0, 0, 0, 255)
-	end
+    end
 end
