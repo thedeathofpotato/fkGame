@@ -43,12 +43,7 @@ function love.update(dt)
     windowHeight = love.window.getHeight()
 
     -- Set fontsizes relative to window size
-    lFs = windowWidth / 20
-    mFs = windowWidth / 30
-    sFs = windowWidth / 40
-    tFs = windowWidth / 85
-
-    wTenth = windowWidth / 10
+    -- TODO
 end
 
 function love.draw()
@@ -61,29 +56,5 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
         love.graphics.draw(bg, 0, 0, 0, windowWidth / bg:getWidth(), windowHeight / bg:getHeight())
         love.graphics.setColor(0, 0, 0, 255)
-
-		-- title
-		love.graphics.setNewFont(sourceCodePro, lFs)
-    	love.graphics.printf('Blahblahblah', 0, 30, windowWidth, "center")
-	
-    	-- enum
-    	local yDist = windowHeight / 4
-    	local eDotDist = windowWidth / 30
-
-    	love.graphics.setNewFont(droidSans, sFs)
-    	love.graphics.print(">", wTenth - eDotDist, yDist)
-    	love.graphics.printf("Ein erster Stichpunkt", wTenth, yDist, windowWidth - 2 * wTenth)
-    	yDist = yDist + sFs * 2
-    	love.graphics.print(">", wTenth - eDotDist, yDist)
-    	love.graphics.printf("Noch einer", wTenth, yDist, windowWidth - 2 * wTenth)
-    	yDist = yDist + sFs * 2
-    	love.graphics.print(">", wTenth - eDotDist, yDist)
-    	love.graphics.printf("Ich bin die drei!!!!111einself", wTenth, yDist, windowWidth - 2 * wTenth)
-    	yDist = yDist + sFs * 2
-    	love.graphics.print(">", wTenth - eDotDist, yDist)
-    	love.graphics.printf("Der vierte von fünf..", wTenth, yDist, windowWidth - 2 * wTenth)
-    	yDist = yDist + sFs * 2
-    	love.graphics.print(">", wTenth - eDotDist, yDist)
-    	love.graphics.printf("Der letzte.", wTenth, yDist, windowWidth - 2 * wTenth)
 	end
 end
