@@ -57,9 +57,9 @@ function love.draw()
         love.graphics.draw(bg, 0, 0, 0, windowWidth / bg:getWidth(), windowHeight / bg:getHeight())
         love.graphics.setColor(0, 0, 0, 255)
         love.graphics.setColor(242, 227, 190, 255)
-        love.graphics.rectangle(fill, 0, 0, love.window.getWidth(), 70)
-        love.graphics.rectangle(fill, (love.window.getWidth()-250), 0, 250, love.window.getHeight())
+        love.graphics.rectangle("fill", 0, 0, love.window.getWidth(), 70)
+        love.graphics.rectangle("fill", (love.window.getWidth()-250), 0, 250, love.window.getHeight())
         love.graphics.setColor(0, 0, 0, 200)
-        love.graphics.rectangle(line, (love.window.getWidth()-250), 0, 250, love.window.getHeight())
+        love.graphics.rectangle("line", (love.window.getWidth()-250), 0, 250, love.window.getHeight())
 	end
 end
