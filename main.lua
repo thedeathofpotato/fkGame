@@ -1,7 +1,11 @@
 -- LÖVEver: 0.9
 
+STANDARD_WINDOW_WIDTH = 1280
+STANDARD_WINDOW_HEIGHT = 800
+STANDARD_FONT_SIZE = 18
+
 function love.load()
-    love.window.setMode(1280, 800, {
+    love.window.setMode(STANDARD_WINDOW_WIDTH, STANDARD_WINDOW_HEIGHT, {
         resizable = true,
         vsync = true,
         minwidth = 800,
@@ -15,6 +19,9 @@ function love.load()
     droidSans = love.filesystem.newFile("DroidSans.ttf")
     sourceCodePro = love.filesystem.newFile("SourceCodePro-Regular.otf")
     freeMono = love.filesystem.newFile("FreeMono.ttf")
+
+    defaultFont = love.graphics.newFont(droidSans, STANDARD_FONT_SIZE)
+    love.graphics.setFont(defaultFont)
 
     gamestate = 0
 end
@@ -43,12 +50,13 @@ function love.update(dt)
     windowHeight = love.window.getHeight()
 
     -- Set fontsizes relative to window size
-    -- TODO
 end
 
 function love.draw()
 
     if gamestate == 0 then
+
+        love.graphics.newFont(droidSans, 12)
 
         love.mouse.setVisible(true)
 
@@ -56,5 +64,25 @@ function love.draw()
         love.graphics.setColor(255, 255, 255, 255)
         love.graphics.draw(bg, 0, 0, 0, windowWidth / bg:getWidth(), windowHeight / bg:getHeight())
         love.graphics.setColor(0, 0, 0, 255)
+
+        love.window.setTitle(love.timer.getFPS())
+
+        fontSize(18)
+        love.graphics.print("hallo font test baum 1234", 0, 0)
+        fontSize(12)
+        love.graphics.print("hallo font test baum 1234", 0, 100)
+        fontSize(24)
+        love.graphics.print("hallo font test baum 1234", 0, 200)
     end
+end
+
+function fontSize(orientationFontSize)
+    local windowWidth = love.window.getWidth()
+    local windowHeight = love.window.getHeight()
+    local ratioWidth = windowWidth / STANDARD_WINDOW_WIDTH
+    local ratioHeight = windowHeight / STANDARD_WINDOW_HEIGHT
+    local ratio = (ratioWidth + ratioHeight) / 2
+    local fontSize = ratio * orientationFontSize
+    local theFont = love.graphics.newFont(droidSans, fontSize)
+    love.graphics.setFont(theFont)
 end
