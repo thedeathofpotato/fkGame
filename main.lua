@@ -2,7 +2,6 @@
 
 STANDARD_WINDOW_WIDTH = 1280
 STANDARD_WINDOW_HEIGHT = 800
-STANDARD_FONT_SIZE = 18
 
 function love.load()
     love.window.setMode(STANDARD_WINDOW_WIDTH, STANDARD_WINDOW_HEIGHT, {
@@ -67,12 +66,15 @@ function love.draw()
 
         love.window.setTitle(love.timer.getFPS())
 
-        fontSize(18)
-        love.graphics.print("hallo font test baum 1234", 0, 0)
-        fontSize(12)
-        love.graphics.print("hallo font test baum 1234", 0, 100)
-        fontSize(24)
-        love.graphics.print("hallo font test baum 1234", 0, 200)
+        local y = 0
+        local nextYDiff = calcParagraph(fontSize(18))
+        love.graphics.print("hallo font test baum 1234", 0, y)
+        y = y + nextYDiff
+        local nextYDiff = calcParagraph(fontSize(12))
+        love.graphics.print("hallo font test baum 1234", 0, y)
+        y = y + nextYDiff
+        local nextYDiff = calcParagraph(fontSize(24))
+        love.graphics.print("hallo font test baum 1234", 0, y)
     end
 end
 
@@ -85,4 +87,13 @@ function fontSize(orientationFontSize)
     local fontSize = ratio * orientationFontSize
     local theFont = love.graphics.newFont(droidSans, fontSize)
     love.graphics.setFont(theFont)
+    return fontSize
+end
+
+function calcParagraph(orientationFontSize)
+    local paragraph = orientationFontSize * 1.5
+    if paragraph > 14 then
+        paragraph = orientationFontSize + 4
+    end
+    return paragraph
 end
